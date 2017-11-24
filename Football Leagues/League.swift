@@ -46,7 +46,7 @@ class League: NSObject {
         let url = "http://api.football-data.org/v1/competitions"
         
         let networkAPI = NetworkAPI()
-        networkAPI.get(url: url, parameters: nil, headers: nil, successBlock: { (responseArray) in
+        networkAPI.getJsonArray(url: url, parameters: nil, headers: nil, successBlock: { (responseArray) in
             var leagues: [League] = []
             for dict in responseArray {
                 let swiftyJson = JSON(dict)

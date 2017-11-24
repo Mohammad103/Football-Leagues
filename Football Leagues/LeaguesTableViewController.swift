@@ -22,6 +22,7 @@ class LeaguesTableViewController: UITableViewController {
         }
     }
 
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,4 +40,13 @@ class LeaguesTableViewController: UITableViewController {
         return cell
     }
 
+    
+    // MARK: - Table view data source
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToTeamsSegue" {
+            let vc = segue.destination as! TeamsViewController
+            vc.league = viewModel.league(for: self.tableView.indexPathForSelectedRow!)
+        }
+    }
 }

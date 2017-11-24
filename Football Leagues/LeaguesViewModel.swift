@@ -43,4 +43,9 @@ class LeaguesViewModel: NSObject {
         return "\(leagues?[indexPath.row].numberOfTeams ?? 0)"
     }
     
+    
+    func league(for indexPath: IndexPath) -> League {
+        return leagues![indexPath.row]
+    }
+    
 }
