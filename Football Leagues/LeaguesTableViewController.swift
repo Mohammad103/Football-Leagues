@@ -41,12 +41,12 @@ class LeaguesTableViewController: UITableViewController {
     }
 
     
-    // MARK: - Table view data source
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToTeamsSegue" {
             let vc = segue.destination as! TeamsViewController
-            vc.league = viewModel.league(for: self.tableView.indexPathForSelectedRow!)
+            vc.viewModel.league = viewModel.league(for: self.tableView.indexPathForSelectedRow!)
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TeamsViewController.swift
+//  MatchesViewController.swift
 //  Football Leagues
 //
 //  Created by Mohammad Shaker on 11/24/17.
@@ -8,66 +8,59 @@
 
 import UIKit
 
-class TeamsViewController: UIViewController {
+class MatchesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var noOfGamesLbl: UILabel!
-    @IBOutlet weak var noOfTeamsLbl: UILabel!
     
-    var viewModel: TeamsViewModel! = TeamsViewModel()
+    var viewModel: MatchesViewModel! = MatchesViewModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.tableView.tableFooterView = UIView()
         self.title = viewModel.titleToDisplay()
         self.titleLbl.text = viewModel.titleToDisplay()
-        self.noOfGamesLbl.text = viewModel.noOfGamesToDisplay()
-        self.noOfTeamsLbl.text = viewModel.noOfTeamsToDisplay()
         
-        viewModel.loadAllTeams {
+        viewModel.loadAllMatches {
             self.tableView.reloadData()
         }
     }
-    
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GoToMatchesSegue" {
-            let vc = segue.destination as! MatchesViewController
-            vc.viewModel.team = viewModel.team(for: self.tableView.indexPathForSelectedRow!)
-        }
-    }
+
 }
 
 
-extension TeamsViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension MatchesViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfTeamsToDisplay(in: section)
+        return viewModel.numberOfMatchesToDisplay(in: section)
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
+        if viewModel.isMatchFinished(for: indexPath) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MatchResultCell", for: indexPath) as! MatchResultCell
+            cell.dateLbl.text = viewModel.matchDateToDisplay(for: indexPath)
+            cell.resultLbl.text = viewModel.matchResultToDisplay(for: indexPath)
+            return cell
+        }
         
-        cell.titleLbl.text = viewModel.teamNameToDisplay(for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MatchScheduledCell", for: indexPath) as! MatchScheduledCell
+        cell.dateLbl.text = viewModel.matchDateToDisplay(for: indexPath)
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Teams"
+            return "Games"
         }
         return ""
     }
-
+    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -76,4 +69,3 @@ extension TeamsViewController: UITableViewDelegate, UITableViewDataSource {
         return 0.0
     }
 }
-

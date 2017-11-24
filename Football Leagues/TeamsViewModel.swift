@@ -14,10 +14,9 @@ class TeamsViewModel: NSObject {
     var league: League?
     
     
-    func loadAllTeams(forLeague league: League, completion: @escaping () -> Void)
+    func loadAllTeams(completion: @escaping () -> Void)
     {
-        self.league = league
-        Team.loadAllTeams(forLeague: league, successBlock: { (teams) in
+        Team.loadAllTeams(forLeague: league!, successBlock: { (teams) in
             self.teams = teams
             completion()
         }) { (error) in
@@ -48,6 +47,11 @@ class TeamsViewModel: NSObject {
     
     func teamNameToDisplay(for indexPath: IndexPath) -> String {
         return teams?[indexPath.row].name ?? ""
+    }
+    
+    
+    func team(for indexPath: IndexPath) -> Team {
+        return teams![indexPath.row]
     }
     
 }

@@ -24,7 +24,7 @@ class Team: NSObject {
     }
     
     
-    class func loadAllTeams(forLeague league: League, successBlock: @escaping (_ leagues: [Team]) -> Void, failureBlock: @escaping (_ error: String) -> Void)
+    class func loadAllTeams(forLeague league: League, successBlock: @escaping (_ teams: [Team]) -> Void, failureBlock: @escaping (_ error: String) -> Void)
     {
         let networkAPI = NetworkAPI()
         networkAPI.get(url: league.teamsURL, parameters: nil, headers: nil, successBlock: { (responseObject) in
