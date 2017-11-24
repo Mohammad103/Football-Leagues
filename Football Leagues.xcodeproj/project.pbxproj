@@ -12,6 +12,9 @@
 		84937A061FC855D0003673DB /* LeaguesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937A051FC855D0003673DB /* LeaguesViewModel.swift */; };
 		84937A081FC85604003673DB /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937A071FC85604003673DB /* League.swift */; };
 		84937A0A1FC85B42003673DB /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937A091FC85B42003673DB /* LeagueCell.swift */; };
+		84937A0E1FC86654003673DB /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937A0D1FC86654003673DB /* NetworkAPI.swift */; };
+		84937A111FC86F17003673DB /* ProgressUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937A101FC86F17003673DB /* ProgressUtility.swift */; };
+		84937A131FC86F33003673DB /* DimUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937A121FC86F33003673DB /* DimUtility.swift */; };
 		84E455C01FC85279001829F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E455BF1FC85279001829F5 /* AppDelegate.swift */; };
 		84E455C51FC85279001829F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E455C31FC85279001829F5 /* Main.storyboard */; };
 		84E455C71FC85279001829F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E455C61FC85279001829F5 /* Assets.xcassets */; };
@@ -25,6 +28,9 @@
 		84937A051FC855D0003673DB /* LeaguesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaguesViewModel.swift; sourceTree = "<group>"; };
 		84937A071FC85604003673DB /* League.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 		84937A091FC85B42003673DB /* LeagueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
+		84937A0D1FC86654003673DB /* NetworkAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		84937A101FC86F17003673DB /* ProgressUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressUtility.swift; sourceTree = "<group>"; };
+		84937A121FC86F33003673DB /* DimUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimUtility.swift; sourceTree = "<group>"; };
 		84E455BC1FC85278001829F5 /* Football Leagues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Football Leagues.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E455BF1FC85279001829F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84E455C41FC85279001829F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +90,23 @@
 			name = Leagues;
 			sourceTree = "<group>";
 		};
+		84937A0C1FC86644003673DB /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				84937A0D1FC86654003673DB /* NetworkAPI.swift */,
+			);
+			name = APIs;
+			sourceTree = "<group>";
+		};
+		84937A0F1FC86EF3003673DB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				84937A101FC86F17003673DB /* ProgressUtility.swift */,
+				84937A121FC86F33003673DB /* DimUtility.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		84E455B31FC85278001829F5 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +130,8 @@
 			children = (
 				84E455BF1FC85279001829F5 /* AppDelegate.swift */,
 				84E455C31FC85279001829F5 /* Main.storyboard */,
+				84937A0F1FC86EF3003673DB /* Utilities */,
+				84937A0C1FC86644003673DB /* APIs */,
 				84937A011FC85557003673DB /* Screens */,
 				84937A001FC85542003673DB /* Assets */,
 			);
@@ -217,15 +242,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Football Leagues/Pods-Football Leagues-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/NitroNSDictionaryCategories/NitroNSDictionaryCategories.framework",
+				"${BUILT_PRODUCTS_DIR}/NitroUIColorCategories/NitroUIColorCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NitroNSDictionaryCategories.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NitroUIColorCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -255,10 +288,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				84937A041FC8559B003673DB /* LeaguesTableViewController.swift in Sources */,
+				84937A131FC86F33003673DB /* DimUtility.swift in Sources */,
 				84E455C01FC85279001829F5 /* AppDelegate.swift in Sources */,
 				84937A081FC85604003673DB /* League.swift in Sources */,
+				84937A111FC86F17003673DB /* ProgressUtility.swift in Sources */,
 				84937A061FC855D0003673DB /* LeaguesViewModel.swift in Sources */,
 				84937A0A1FC85B42003673DB /* LeagueCell.swift in Sources */,
+				84937A0E1FC86654003673DB /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
