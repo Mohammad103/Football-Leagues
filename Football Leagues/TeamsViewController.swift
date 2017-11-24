@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TeamsViewController: UIViewController {
 
@@ -56,8 +57,14 @@ extension TeamsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
         
         cell.titleLbl.text = viewModel.teamNameToDisplay(for: indexPath)
+        cell.logoImageView.sd_setImage(with: URL(string: viewModel.teamLogoUrl(for: indexPath)), placeholderImage: UIImage(named: "placeholder"))
         
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

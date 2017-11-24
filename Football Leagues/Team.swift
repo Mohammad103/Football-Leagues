@@ -12,12 +12,15 @@ import SwiftyJSON
 class Team: NSObject {
 
     var name: String! = ""
+    var logoURL: String! = ""
     var fixturesURL: String! = ""
+    
     
     class func parse(json: JSON) -> Team
     {
         let team: Team = Team()
         team.name = json["name"].string ?? ""
+        team.logoURL = json["crestUrl"].string ?? ""
         team.fixturesURL = json["_links"]["fixtures"]["href"].string ?? ""
         
         return team

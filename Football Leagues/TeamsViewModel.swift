@@ -50,6 +50,11 @@ class TeamsViewModel: NSObject {
     }
     
     
+    func teamLogoUrl(for indexPath: IndexPath) -> String {
+        return teams?[indexPath.row].logoURL ?? ""
+    }
+    
+    
     func team(for indexPath: IndexPath) -> Team {
         return teams![indexPath.row]
     }

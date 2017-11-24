@@ -30,6 +30,11 @@ class MatchesViewModel: NSObject {
     }
     
     
+    func teamLogoURL() -> String {
+        return team!.logoURL
+    }
+    
+    
     func numberOfMatchesToDisplay(in section: Int) -> Int {
         return matches?.count ?? 0
     }

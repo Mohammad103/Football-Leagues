@@ -472,6 +472,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="pyE-GI-KS3" id="VRh-Ps-59S"/>
+                        <outlet property="teamLogoImageView" destination="cGZ-tB-EXl" id="DfY-Ej-cqc"/>
                         <outlet property="titleLbl" destination="Qmk-1H-qLR" id="sIl-02-Dgo"/>
                     </connections>
                 </viewController>

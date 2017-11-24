@@ -12,6 +12,7 @@ class MatchesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var teamLogoImageView: UIImageView!
     
     var viewModel: MatchesViewModel! = MatchesViewModel()
     
@@ -22,6 +23,7 @@ class MatchesViewController: UIViewController {
         self.tableView.tableFooterView = UIView()
         self.title = viewModel.titleToDisplay()
         self.titleLbl.text = viewModel.titleToDisplay()
+        self.teamLogoImageView.sd_setImage(with: URL(string: viewModel.teamLogoURL()), placeholderImage: UIImage(named: "placeholder"))
         
         viewModel.loadAllMatches {
             self.tableView.reloadData()
@@ -51,6 +53,11 @@ extension MatchesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchScheduledCell", for: indexPath) as! MatchScheduledCell
         cell.dateLbl.text = viewModel.matchDateToDisplay(for: indexPath)
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
