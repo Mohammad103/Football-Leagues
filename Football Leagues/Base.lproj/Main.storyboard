@@ -279,9 +279,14 @@
         <scene sceneID="Omu-Vd-YzU">
             <objects>
                 <navigationController title="Football Leagues" id="RJd-0Z-Hcj" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c63-h7-Cyk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c63-h7-Cyk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.20392156859999999" green="0.25882352939999997" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="ht6-TH-mID" kind="relationship" relationship="rootViewController" id="pZe-99-H9a"/>
